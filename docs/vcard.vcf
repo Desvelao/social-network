@@ -1,0 +1,19 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Antonio Gutiérrez
+N:Gutiérrez;Antonio;;;
+NICKNAME:Toni
+LANG:es-ES
+GENDER:M
+EMAIL:iamdesvelao@gmail.com
+CATEGORIES:gamer,programmer
+NOTE;LANGUAGE=en-US:I am passionate about technology and I like to tinker with computers.
+URL:https://desvelao.github.io/profile
+SOURCE:https://desvelao.github.io/social-network/vcard.vcf
+X-FEED;LANGUAGE=en-US:https://desvelao.github.io/social-network/feeds.rss
+X-DISCORD:https://discordapp.com/users/189996884322942976
+X-GITHUB:https://www.github.com/Desvelao
+X-KO-FI:https://www.ko-fi.com/desvelao
+X-REDDIT:https://www.reddit.com/user/Desvelao
+X-STEAM:http://steamcommunity.com/profiles/76561198073106653
+END:VCARD

@@ -1,0 +1,104 @@
+#!/bin/env python3
+import datetime
+import csv
+import typer
+from typing_extensions import Annotated
+
+date_format = "%Y-%m-%dT%H:%M:%SZ%z"
+
+def generate_atom(title, link, description, author, language, build_date, items):
+    from feedgen.feed import FeedGenerator
+
+    fg = FeedGenerator()
+    fg.id(link)
+    fg.title(title)
+    fg.author(author)
+    fg.link(href=link, rel='self')
+    fg.language(language)
+
+    item_index = 0
+    for item in items:
+        # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+        date_obj = datetime.datetime.strptime(item["date"], date_format)
+        item_index += 1
+
+        fe = fg.add_entry()
+        fe.id(item["id"] or item_index)
+        fe.title(item["title"] or item["message"])
+        fe.description(item["message"] or item["title"])
+        fe.link(href=item["link"])
+        fe.published(date_obj)
+        fe.updated(date_obj)
+
+    return fg.atom_str(pretty=True)
+
+def generate_rss(title, link, description, author, language, build_date, items):
+    from rfeed import Feed, Item, Extension, Guid, Serializable
+
+    class AtomLinkNamespace(Extension):
+        def get_namespace(self):
+            return {"xmlns:atom": "http://www.w3.org/2005/Atom"}
+
+    class AtomLink(Serializable):
+        def __init__(self, href):
+            Serializable.__init__(self)
+            self.href = href
+
+        def publish(self, handler):
+            Serializable.publish(self, handler)
+            self._write_element("atom:link", None, {"href": self.href, "rel": "self"})
+
+    feed_items = []
+    for item in items:
+        # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+        date_obj = datetime.datetime.strptime(item["date"], date_format)
+        feed_items.append(
+            Item(
+                title = item["title"] or None,
+                link = item["link"] or None,
+                description = item["message"] or None,
+                author = f"{author['email']} ({author['name']})",
+                guid = item["id"] and Guid(item["id"]) or None,
+                pubDate = date_obj
+            )
+        )
+    feed = Feed(
+        title = title,
+        link = link,
+        description = description,
+        language = language,
+        lastBuildDate = build_date,
+        items = feed_items,
+        extensions = [AtomLinkNamespace(),AtomLink(link)])
+ 
+    return feed.rss()
+
+def main(file: str,
+    title: Annotated[str, typer.Option(prompt=True)],
+    link: Annotated[str, typer.Option(prompt=True)],
+    description: Annotated[str, typer.Option(prompt=True)],
+    author_name: Annotated[str, typer.Option(prompt=False)],
+    author_email: Annotated[str, typer.Option(prompt=False)],
+    language: Annotated[str, typer.Option(prompt=False)] = 'en-US',
+    recent_feeds: Annotated[int, typer.Option(prompt=False)] = 0,
+    output_feed: Annotated[str, typer.Option(prompt=False)] = 'atom'):
+    """
+    Generate a RSS or ATOM social feed using a .csv file with the columns: date,message
+    """
+
+    author = {"name": author_name, "email": author_email}
+
+    with open(file, mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        csv_reader = sorted(csv_reader, key = lambda row: datetime.datetime.strptime(row["date"], date_format))
+        if recent_feeds > 0:
+            csv_reader = csv_reader[-recent_feeds:]
+    if output_feed == 'atom':
+        output_str = generate_atom(title, link, description, author, language, datetime.datetime.now(), csv_reader)
+    else:
+        output_str = generate_rss(title, link, description, author, language, datetime.datetime.now(), csv_reader)
+
+    print(output_str)
+
+if __name__ == "__main__":
+    typer.run(main)
