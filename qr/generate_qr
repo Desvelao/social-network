@@ -1,13 +1,15 @@
 #!/bin/env python3
 import qrcode
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import typer
 from typing_extensions import Annotated
 
 def main(
     image: Annotated[str, typer.Option(prompt=False)] = "",
     output: Annotated[str, typer.Option(prompt=True)] = "qr.png",
-    data: Annotated[str, typer.Option(prompt=True)] = ""
+    data: Annotated[str, typer.Option(prompt=True)] = "",
+    caption_top: Annotated[str, typer.Option(prompt=False)] = "",
+    caption_bottom: Annotated[str, typer.Option(prompt=False)] = ""
     ):
     """
     Generate a QR code for vCard or links
@@ -19,9 +21,6 @@ def main(
         error_correction=qrcode.constants.ERROR_CORRECT_H
     )
     
-    # taking url or text
-    url = 'https://www.geeksforgeeks.org/'
-    
     # adding URL or text to QRcode
     QRcode.add_data(data)
     
@@ -30,10 +29,12 @@ def main(
     
     # taking color name from user
     QRcolor = 'Green'
-    
     # adding color to QR code
+    # QRimg = QRcode.make_image(
+    #     fill_color=QRcolor, back_color="white").convert('RGB')
+
     QRimg = QRcode.make_image(
-        fill_color=QRcolor, back_color="white").convert('RGB')
+        fill_color='Black', back_color="white").convert('RGB')
 
     # taking image which user wants 
     # in the QR code center
@@ -54,6 +55,45 @@ def main(
         pos = ((QRimg.size[0] - logo_img.size[0]) // 2,
             (QRimg.size[1] - logo_img.size[1]) // 2)
         QRimg.paste(logo_img, pos)
+
+    if caption_top:
+        font_file = 'NotoSans-Black.ttf'
+        draw = ImageDraw.Draw(QRimg)
+        qr_width, qr_height = QRimg.size
+        font_size = 1 #starting font size
+        img_fraction = 0.90 # portion of image width you want text width to be, I've had good luck with .90
+        # TODO: fix offset
+        font_height_max = QRcode.border * QRcode.box_size - 18
+        caption_x = 0
+        caption_y = 0
+        font = ImageFont.truetype(font_file, font_size)
+        while font.getbbox(caption_top)[2] - font.getbbox(caption_top)[0] < img_fraction*qr_width and font.getbbox(caption_top)[3] - font.getbbox(caption_top)[1] < font_height_max:
+            font_size += 1
+            font = ImageFont.truetype(font_file, font_size)
+        caption_x = int(qr_width - font.getbbox(caption_top)[2] - font.getbbox(caption_top)[0]) / 2 #Center the label
+        # print('OffsetX/OffsetY: ' + str(caption_x) + '/' + str(caption_y))
+        draw.text((caption_x, caption_y), caption_top, font=font, fill=(0,0,0,255))
+
+    if caption_bottom:
+        font_file = 'NotoSans-Black.ttf'
+        draw = ImageDraw.Draw(QRimg)
+        qr_width, qr_height = QRimg.size
+        font_size = 1 #starting font size
+        img_fraction = 0.90 # portion of image width you want text width to be, I've had good luck with .90
+        # TODO: fix offset
+        font_height_max = QRcode.border * QRcode.box_size - 10
+        caption_x = 0
+        caption_y = 0
+        font = ImageFont.truetype(font_file, font_size)
+        while font.getbbox(caption_bottom)[2] - font.getbbox(caption_bottom)[0] < img_fraction*qr_width and font.getbbox(caption_bottom)[3] - font.getbbox(caption_bottom)[1] < font_height_max:
+            font_size += 1
+            font = ImageFont.truetype(font_file, font_size)
+        caption_x = int(qr_width - font.getbbox(caption_bottom)[2] - font.getbbox(caption_bottom)[0]) / 2 #Center the label
+        # TODO: fix offset
+        caption_y = qr_height - font.size - 8
+        # print('OffsetX/OffsetY: ' + str(caption_x) + '/' + str(caption_y))
+        draw.text((caption_x, caption_y), caption_bottom, font=font, fill=(0,0,0,255))
+        
     
     # save the QR code generated
     QRimg.save(output)
