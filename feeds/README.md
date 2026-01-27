@@ -38,9 +38,9 @@ where:
 - `<FEED_TITLE>`: feed channel title.
 - `<FEED_LINK>`: feed channel link.
 - `<FEED_DESCRIPTION>`: feed channel description.
-- `<FEED_RSS_OUTPUT>`: output file
+- `<FEED_RSS_OUTPUT>`: output file. e.g. feeds.rss
 
-By default, the generated RSS feeds uses all the entries sorted by the `date` column. You can use the `--recent-feeds` option to change only include the recent feeds by count. For example:
+By default, the generated RSS feed uses all the entries sorted by the `date` column. You can use the `--recent-feeds` option to only include the recent feeds by count. For example:
 
 ```
 python generate_feed --recent-feeds 15 <rest of options>
@@ -53,19 +53,19 @@ python generate_feed --help
 
 Example:
 ```
-python generate_feed feeds.csv --author-email "author@email.com" --author-name "Author Name" --title "Desvelao's feeds" --link "https://desvelao.github.io/social-network/feeds.rss" --description "Recently updated feeds from Desvelao" > feeds.rss
+python generate_feed feeds.csv --author-email "author@example.com" --author-name "Author Name" --title "Author Name's feeds" --link "https://author_name.github.io/social-network/feeds.rss" --description "Recently updated feeds from Author Name" > feeds.rss
 ```
 
 ## Usage with Docker
 
 - RSS
 ```
-docker run --rm -v "$(pwd):/home/python/app" -v "$(pwd)/../feeds.csv:/tmp/feeds.csv" -w "/home/python/app" python:3.10.12-alpine3.18 sh -c 'pip install -r requirements.txt --quiet && python generate_feed /tmp/feeds.csv --author-email "author@email.com" --author-name "Desvelao" --title "Desvelao feeds" --link "https://desvelao.github.io/social-network/feeds.rss" --description "Recently updated feeds from Desvelao" --output-feed rss' > ../feeds.rss
+docker run --rm -v "$(pwd):/home/python/app" -v "$(pwd)/../feeds.csv:/tmp/feeds.csv" -w "/home/python/app" python:3.10.12-alpine3.18 sh -c 'pip install -r requirements.txt --quiet && python generate_feed /tmp/feeds.csv --author-email "author@example.com" --author-name "Author Name" --title "Author Name's feeds" --link "https://author_name.github.io/social-network/feeds.rss" --description "Recently updated feeds from Author Name" --output-feed rss' > ../feeds.rss
 ```
 
 ATOM
 ```
-docker run --rm -v "$(pwd):/home/python/app" -v "$(pwd)/../feeds.csv:/tmp/feeds.csv" -w "/home/python/app" python:3.10.12-alpine3.18 sh -c 'pip install -r requirements.txt --quiet && python generate_feed /tmp/feeds.csv --author-email "author@email.com" --author-name "Desvelao" --title "Desvelao feeds" --link "https://desvelao.github.io/social-network/atom.xml" --description '"Recently updated feeds from Desvelao" --output-feed atom' > ../atom.xml
+docker run --rm -v "$(pwd):/home/python/app" -v "$(pwd)/../feeds.csv:/tmp/feeds.csv" -w "/home/python/app" python:3.10.12-alpine3.18 sh -c 'pip install -r requirements.txt --quiet && python generate_feed /tmp/feeds.csv --author-email "author@example.com" --author-name "Author Name" --title "Author Name's feeds" --link "https://author_name.github.io/social-network/atom.xml" --description '"Recently updated feeds from Author Name" --output-feed atom' > ../atom.xml
 ```
 
 ## Develop with Docker

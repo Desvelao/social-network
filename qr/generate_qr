@@ -71,7 +71,6 @@ def main(
             font_size += 1
             font = ImageFont.truetype(font_file, font_size)
         caption_x = int(qr_width - font.getbbox(caption_top)[2] - font.getbbox(caption_top)[0]) / 2 #Center the label
-        # print('OffsetX/OffsetY: ' + str(caption_x) + '/' + str(caption_y))
         draw.text((caption_x, caption_y), caption_top, font=font, fill=(0,0,0,255))
 
     if caption_bottom:
@@ -91,7 +90,6 @@ def main(
         caption_x = int(qr_width - font.getbbox(caption_bottom)[2] - font.getbbox(caption_bottom)[0]) / 2 #Center the label
         # TODO: fix offset
         caption_y = qr_height - font.size - 8
-        # print('OffsetX/OffsetY: ' + str(caption_x) + '/' + str(caption_y))
         draw.text((caption_x, caption_y), caption_bottom, font=font, fill=(0,0,0,255))
         
     
