@@ -40,6 +40,7 @@ python generate_qr --data "$(cat <VCARD>)" --image <IMAGE> --output qr.png
 where:
 - `<VCARD>`: vcard file.
 - `<IMAGE>`: path to image.
+```
 
 See the available options:
 ```
