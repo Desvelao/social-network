@@ -36,7 +36,8 @@ jobs:
       working-directory: ./feed_generator_md
       run: |
         python script.py build --directory ./feeds --output feed.xml
-        cp feed.xml ../feed.xml
+        mkdir -p ../gh-pages
+        cp feed.xml ../gh-pages/feed.xml
 
     # Step 6: Deploy only feed.xml to gh-pages branch
     - name: Deploy feed.xml to gh-pages
@@ -45,6 +46,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./
         publish_branch: gh-pages
+        publish_dir: gh-pages
         keep_files: true
         allow_empty_commit: false
         exclude_assets: "*" # Exclude everything except feed.xml
