@@ -28,7 +28,6 @@ jobs:
     - name: Install dependencies
       working-directory: ./feed_generator_md
       run: |
-        cd ./feed_generator_md
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
