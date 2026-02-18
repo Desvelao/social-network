@@ -31,6 +31,7 @@ jobs:
     - name: Build RSS feed
       working-directory: ./feed_generator_md
       run: |
+        cat config.conf
         python script.py build --directory ./feeds --output feeds.rss
         mkdir -p ../gh-pages
         cp feeds.rss ../gh-pages/feeds.rss
