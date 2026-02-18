@@ -1,0 +1,49 @@
+name: Build and Deploy RSS Feed
+
+on:
+  push:
+    branches:
+      - feeds
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Switch to the main branch
+    - name: Checkout main branch
+      run: git fetch origin main && git checkout main
+
+    # Step 3: Set up Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    # Step 4: Install dependencies
+    - name: Install dependencies
+      run: |
+        cd ./feed_generator_md
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 5: Build RSS feed
+    - name: Build RSS feed
+      run: |
+        python script.py build --directory ./feeds --output feed.xml
+
+    # Step 6: Deploy only feed.xml to gh-pages branch
+    - name: Deploy feed.xml to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        publish_branch: gh-pages
+        keep_files: true
+        allow_empty_commit: false
+        exclude_assets: "*" # Exclude everything except feed.xml
+        include_assets: "feed.xml"
