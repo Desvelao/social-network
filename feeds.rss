@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Feed</title><link>https://example.com</link><description>RSS feed generated from markdown files</description><language>en-US</language><lastBuildDate>Wed, 18 Feb 2026 20:19:26 GMT</lastBuildDate><generator>rfeed v1.1.1</generator><docs>https://github.com/svpino/rfeed/blob/master/README.md</docs><atom:link href="https://example.com" rel="self"></atom:link></channel></rss>
