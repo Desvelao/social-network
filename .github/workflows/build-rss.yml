@@ -26,6 +26,7 @@ jobs:
 
     # Step 4: Install dependencies
     - name: Install dependencies
+      working-directory: ./feed_generator_md
       run: |
         cd ./feed_generator_md
         python -m pip install --upgrade pip
@@ -33,8 +34,10 @@ jobs:
 
     # Step 5: Build RSS feed
     - name: Build RSS feed
+      working-directory: ./feed_generator_md
       run: |
         python script.py build --directory ./feeds --output feed.xml
+        cp feed.xml ../feed.xml
 
     # Step 6: Deploy only feed.xml to gh-pages branch
     - name: Deploy feed.xml to gh-pages
