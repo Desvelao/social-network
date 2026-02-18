@@ -1,0 +1,4 @@
+feedgen==1.0.0
+rfeed==1.1.1
+markdown==3.10.1
+typer==0.21.1
