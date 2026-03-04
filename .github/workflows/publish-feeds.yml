@@ -1,0 +1,84 @@
+name: Build and publish feeds.rss
+
+on:
+  push:
+    branches: ["feeds"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: "3.12"
+  WHEEL_REPO: "OWNER/REPO"
+  WHEEL_TAG: "v0.0.1"
+  WHEEL_ASSET: "*.whl"
+  FEEDS_FILE: "feeds.rss"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install wheel from GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p wheel
+
+          tag="${WHEEL_TAG}"
+          if [ -z "$tag" ]; then
+            tag=$(gh release view --repo "$WHEEL_REPO" --json tagName -q .tagName)
+          fi
+
+          gh release download "$tag" \
+            --repo "$WHEEL_REPO" \
+            --pattern "$WHEEL_ASSET" \
+            --dir wheel
+
+          wheel_file=$(find wheel -maxdepth 1 -type f -name '*.whl' | head -n 1)
+          if [ -z "$wheel_file" ]; then
+            echo "No wheel found in release $tag for $WHEEL_REPO matching $WHEEL_ASSET"
+            exit 1
+          fi
+
+          python -m pip install --upgrade pip
+          python -m pip install "$wheel_file"
+
+      - name: Build feeds.rss
+        run: |
+          set -euo pipefail
+          dsipy feeds build feeds --title '${{ secrets.FEEDS_TITLE }}' --link 'https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ env.FEEDS_FILE }}' --description '${{ secrets.FEEDS_DESCRIPTION }}' --author '${{ secrets.FEEDS_AUTHOR }}' --email '${{ secrets.FEEDS_EMAIL }}' --output '${{ env.FEEDS_FILE }}'
+
+      - name: Prepare Pages artifact
+        run: |
+          set -euo pipefail
+          mkdir -p public
+
+          feeds_file=$(find . -maxdepth 4 -type f -name "${{ env.FEEDS_FILE }}" | head -n 1)
+          if [ -z "$feeds_file" ]; then
+            echo "${{ env.FEEDS_FILE }} was not generated"
+            exit 1
+          fi
+
+          cp "$feeds_file" public/${{ env.FEEDS_FILE }}
+
+      - name: Publish to gh-pages (keep existing files)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: public
+          keep_files: true
