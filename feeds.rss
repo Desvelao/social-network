@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The adventures of Antonio Gutiérrez</title><link>https://desvelao.github.io/social-network/feeds.rss</link><description>The adventures of Antonio Gutiérrez</description><language>en-US</language><lastBuildDate>Mon, 06 Apr 2026 16:15:53 GMT</lastBuildDate><generator>rfeed v1.1.1</generator><docs>https://github.com/svpino/rfeed/blob/master/README.md</docs><atom:link href="https://desvelao.github.io/social-network/feeds.rss" rel="self"></atom:link><item><title>Creating an inventory</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2026-04-02_17-34-00.md</link><description><![CDATA[<p>I was organizing some bathroom items when I found an item I thought I did not have and bought recently an item, so I have duplicated. Today and in other previous times, I have thought about some app to manage the inventory, so I could avoid these things.</p>
+<p>Some time ago I thought about creating an inventory app to run as PWA and that can be used offline from mobile using some persistence mechanism in the browser.</p>
+<p>Searching, I have found a self-hosted app that can be used from mobile too. It has no PWA feature or offline usage but I think it could be useful to me as starting point to create the inventory. This allows exporting to CSV so I could migrate the data.</p>
+<p>The app is called <a href="https://homebox.software/en/">Homebox</a> and it has the minimal requirements for me as nested storage location and other cool features.</p>]]></description><author>Antonio Gutiérrez (iamdesvela@gmail.com)</author><pubDate>Thu, 02 Apr 2026 17:34:00 GMT</pubDate><guid isPermaLink="false">feeds-2026-04-02-17-34-00-md</guid></item><item><title>markdown support and test variable interpolation</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2026-03-06_16-18-50.md</link><description><![CDATA[<h1>Markdown Features Sample</h1>
+<h2>Headings</h2>
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+<h2>Emphasis</h2>
+<ul>
+<li><em>Italic</em></li>
+<li><strong>Bold</strong></li>
+<li><strong><em>Bold &amp; Italic</em></strong></li>
+<li>~~Strikethrough~~</li>
+</ul>
+<h2>Lists</h2>
+<h3>Unordered List</h3>
+<ul>
+<li>Item A</li>
+<li>Item B</li>
+<li>Nested item</li>
+</ul>
+<h3>Ordered List</h3>
+<ol>
+<li>First</li>
+<li>Second</li>
+<li>Third</li>
+</ol>
+<h2>Links</h2>
+<p><a href="https://www.microsoft.com">Microsoft</a></p>
+<h2>Images</h2>
+<p><img alt="Alt text" src="image-url" /></p>
+<h2>Code</h2>
+<p>Inline code: <code>print("Hello")</code></p>
+<p>Code block:</p>
+<pre><code class="language-python">def greet():
+  return &quot;Hello&quot;
+</code></pre>
+<h2>Blockquotes</h2>
+<blockquote>
+<p>This is a blockquote.</p>
+</blockquote>
+<h2>Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Stock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pen</td>
+<td>1€</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Notebook</td>
+<td>3€</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2>Horizontal Rule</h2>
+<hr />
+<h2>Task Lists</h2>
+<ul>
+<li>[x] Add markdown features</li>
+<li>[ ] Review</li>
+<li>[ ] Finalize</li>
+</ul>
+<h2>Escaping Characters</h2>
+<p>Use <code>\*</code> to show a literal asterisk.</p>
+<h2>Footnotes</h2>
+<p>Here is a sentence with a footnote.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<h2>Inline HTML</h2>
+<p>This is an inline HTML example.</p>
+
+<p><img alt="Image" src="https://images2.alphacoders.com/479/thumb-350-479565.webp" /></p>
+<p>Más info en <a href="https://ejemplo.com">mi web</a></p>
+<p>Testing template string:</p>
+<p>my_var: VAR from metadata</p>
+<p>file_path: feeds/2026-03-06_16-18-50.md</p>
+<p>file_name: 2026-03-06_16-18-50.md</p>
+<p>file_dir: feeds</p>
+<p>file_ext: .md</p>
+<p>gh_repo_source_base_url: https://github.com/Desvelao/social-network/tree/main</p>
+<p>gh_owner: Desvelao</p>
+<p>gh_repo: social-network</p>
+<p>gh_pages_base_url: https://desvelao.github.io/social-network</p>
+<p>gh_repo_source_base_url: https://github.com/Desvelao/social-network/tree/main</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>This is the footnote text.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>]]></description><author>Antonio Gutiérrez (iamdesvela@gmail.com)</author><pubDate>Fri, 06 Mar 2026 16:18:50 GMT</pubDate><guid isPermaLink="false">feeds-2026-03-06-16-18-50-md</guid><media:content url="https://images2.alphacoders.com/479/thumb-350-479565.webp" type="image/webp" medium="image"></media:content></item><item><title>Roshan, new home!</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2024-12-17_21-17-00.md</link><description><![CDATA[<p>Roshan, a Dota 2 Discord bot, got a new home after a long time. New interactions update v0.4.0-alpha1 is available in the development server.</p>]]></description><author>Antonio Gutiérrez (iamdesvela@gmail.com)</author><pubDate>Tue, 17 Dec 2024 21:17:00 GMT</pubDate><guid isPermaLink="false">feeds-2024-12-17-21-17-00-md</guid></item><item><title>Hi world!</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2024-05-01_19-23-10.md</link><description><![CDATA[<p>Hello world!</p>]]></description><author>Antonio Gutiérrez (iamdesvela@gmail.com)</author><pubDate>Wed, 01 May 2024 19:23:10 GMT</pubDate><guid isPermaLink="false">feeds-2024-05-01-19-23-10-md</guid></item></channel></rss>
