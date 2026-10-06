@@ -46,7 +46,7 @@ Then, clone the forked repository to your local machine.
 
 #### 1) Configure workflow
 
-The `.github/workflows/publish-feeds.yml` file builds and publishes the feeds. This uses under the hood the [callable workflow](https://github.com/Desvelao/dsipy/blob/main/.github/workflows/gha-build-feeds.yml), refer there for more details about the arguments and secrets.
+The `.github/workflows/publish-feeds.yml` file builds and publishes the feeds. This uses under the hood the [callable workflow](https://github.com/Desvelao/dsipy/blob/v0.0.2/.github/workflows/gha-build-feeds.yml), refer there for more details about the arguments and secrets.
 
 Edit `.github/workflows/publish-feeds.yml`:
 
@@ -62,7 +62,7 @@ git push origin main
 
 In **Settings → Secrets and variables → Actions → New repository secret**, create:
 
-> These values can be defined directly in the workflow file as well, but using secrets is recommended to avoid hardcoding sensitive information in the repository. Refer to the [callable workflow](https://github.com/Desvelao/dsipy/blob/main/.github/workflows/gha-build-feeds.yml) for more details about the arguments and secrets.
+> These values can be defined directly in the workflow file as well, but using secrets is recommended to avoid hardcoding sensitive information in the repository. Refer to the [callable workflow](https://github.com/Desvelao/dsipy/blob/v0.0.2/.github/workflows/gha-build-feeds.yml) for more details about the arguments and secrets.
 
 - `FEEDS_TITLE`: The title of the feeds, e.g. "My DSI feeds".
 - `FEEDS_DESCRIPTION`: The description of the feeds, e.g. "My DSI feeds description".
@@ -74,6 +74,9 @@ In **Settings → Secrets and variables → Actions → New repository secret**,
 my_name_from_secret=Desvelao
 another_var=Another value
 ```
+
+- `FEEDS_LINK`: (Optional) The public URL of the feed file. By default it is built as `https://<GITHUB_USERNAME>.github.io/<REPOSITORY_NAME>/feeds.rss`, so set it when you use a custom domain.
+- `FEEDS_SIGN_PRIVATE_KEY` and `FEEDS_SIGN_PUBLIC_KEY`: (Optional, set both) The Ed25519 keypair in PEM format used to sign each feed item. Create it with `dsipy key create` and publish the public key in your vCard (`KEY` property). Never commit the private key.
 
 Then, they can be used in the markdown files as:
 
@@ -109,6 +112,20 @@ In **Settings → Pages**, configure publishing from:
 - Folder: `/ (root)`
 
 > This will publish the `gh-pages` branch content in `https://<GITHUB_USERNAME>.github.io/<REPOSITORY_NAME>/`.
+
+### 4) (Optional) Use a custom domain
+
+A custom domain makes a better stable address for your identity than the `github.io` one. Configure the DNS records as described in the [GitHub documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site), then:
+
+1. In **Settings → Secrets and variables → Actions → Variables**, create the variable `PAGES_CNAME` with your domain, e.g. `alice.example`. The workflow writes the `CNAME` file in `gh-pages` on every run, so it is not lost between deployments.
+2. Create the secret `FEEDS_LINK` with the public URL of the feed, e.g. `https://alice.example/feeds.rss`.
+3. In **Settings → Pages**, set the custom domain and enable **Enforce HTTPS**.
+
+## What is published automatically
+
+Only the feed file (`feeds.rss`) is built and published by the workflow. Everything else (vCard, images, other public files) is committed by you directly to the `gh-pages` branch, see [Publish other files](#publish-other-files). The workflow keeps those files (`keep_files: true`), so they are not removed when the feed is updated, and it does not validate them: run `dsipy vcard validate <FILE>` before pushing a vCard.
+
+The workflow publishes by pushing to the `gh-pages` branch, it does not use the GitHub Pages artifact deployment.
 
 ## Add feeds
 
