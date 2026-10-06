@@ -11,9 +11,10 @@ NOTE;LANGUAGE=en-US:I am passionate about technology and I like to tinker with c
 URL:https://desvelao.github.io/profile
 SOURCE:https://desvelao.github.io/social-network/vcard.vcf
 X-FEED;LANGUAGE=en-US:https://desvelao.github.io/social-network/feeds.rss
-X-SOCIAL;PLATFORM:discord:https://discordapp.com/users/189996884322942976
-X-SOCIAL;PLATFORM:github:https://www.github.com/Desvelao
-X-SOCIAL;PLATFORM:kofi:https://www.ko-fi.com/desvelao
-X-SOCIAL;PLATFORM:reddit:https://www.reddit.com/user/Desvelao
-X-SOCIAL;PLATFORM:steam:http://steamcommunity.com/profiles/76561198073106653
+X-SOCIAL;PLATFORM=discord:https://discordapp.com/users/189996884322942976
+X-SOCIAL;PLATFORM=github:https://www.github.com/Desvelao
+X-SOCIAL;PLATFORM=kofi:https://www.ko-fi.com/desvelao
+X-SOCIAL;PLATFORM=reddit:https://www.reddit.com/user/Desvelao
+X-SOCIAL;PLATFORM=steam:http://steamcommunity.com/profiles/76561198073106653
+KEY;TYPE=public;ALG=ed25519;PREF=1;ENCODING=b:MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=
 END:VCARD
