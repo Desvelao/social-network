@@ -50,6 +50,14 @@ The `.github/workflows/publish-feeds.yml` file builds and publishes the feeds. T
 
 Edit `.github/workflows/publish-feeds.yml`:
 
+- `source_dir` and `feeds_file`: the folder with the markdown sources and the name of the generated feed.
+- `feeds_limit`: (Optional) keep only the N newest items in the feed. All the items are published when it is omitted. Do not set it to `0`: that generates an empty feed.
+- `command_args`: (Optional) extra arguments passed to `dsipy feeds build`, e.g. `--language es-ES`.
+- `artifact_name`: (Optional) name of the intermediate artifact with the generated feed. The publish job follows it automatically.
+- `wheel_repo_token` (secret): (Optional) token with read access to the dsipy releases, only needed for private wheel repositories.
+
+The title, description, author, email, feed link and variables are passed as secrets (see the next step); the callable workflow also accepts the title, description, author, email, `feed_link` and `feeds_vars` as plain `with:` inputs, but secrets take precedence.
+
 If some change is applied, commit and push the changes.
 
 ```bash
