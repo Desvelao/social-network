@@ -1,2 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>The adventures of Antonio Gutiérrez</title><link>https://desvelao.github.io/social-network/feeds.rss</link><description>The adventures of Antonio Gutiérrez</description><language>en-US</language><lastBuildDate>Tue, 06 Oct 2026 18:06:01 GMT</lastBuildDate><generator>rfeed v1.1.1</generator><docs>https://github.com/svpino/rfeed/blob/master/README.md</docs><atom:link href="https://desvelao.github.io/social-network/feeds.rss" rel="self"></atom:link></channel></rss>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>The adventures of Antonio Gutiérrez</title><link>https://desvelao.github.io/social-network/feeds.rss</link><description>The adventures of Antonio Gutiérrez</description><language>en-US</language><lastBuildDate>Tue, 06 Oct 2026 18:40:14 GMT</lastBuildDate><generator>rfeed v1.1.1</generator><docs>https://github.com/svpino/rfeed/blob/master/README.md</docs><atom:link href="https://desvelao.github.io/social-network/feeds.rss" rel="self"></atom:link><item><title>Subscribe to RSS</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2026-06-18_17-35-00.md</link><description><![CDATA[<p>Subscribe to RSS feeds from some sources: https://github.com/Desvelao/social-network/blob/gh-pages/resources/subscribe_rss.md</p>]]></description><author>Antonio Gutiérrez (iamdesvelao@gmail.com.)</author><pubDate>Thu, 18 Jun 2026 17:35:00 GMT</pubDate><guid isPermaLink="false">2026-06-18-17-35-00</guid><signature alg="ed25519" key-id="MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=">4e438ba83e3211d72e4bd6dd8e7f3f863a06908155fec5702864ca98e75457cc5d9f8707c3c98555e90c25ec045a524c9430964362634d4740237a56faf80e00</signature></item><item><title>Remembering my childhood</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2026-06-13_18-30-00.md</link><description><![CDATA[<p>I just watched the first there films of Toy Story this afternoon in a row. They are amazing and beautiful despite the years. ❤️</p>
+<pre><code>- ¡Hasta el infinito y más allá!
+- &quot;El gaaaaancho!&quot; 🪝
+</code></pre>
+<p>They remember me about my childhood, my toys I grew with and the stories I imagined. Thank you so much for precious and unforgettable moments! 😊</p>
+<h1>toysforever</h1>]]></description><author>Antonio Gutiérrez (iamdesvelao@gmail.com.)</author><pubDate>Sat, 13 Jun 2026 18:30:00 GMT</pubDate><guid isPermaLink="false">2026-06-13-18-30-00</guid><signature alg="ed25519" key-id="MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=">ed946b46ec0f0659ee833a15293219c608e055a60e8eb5ea872c9b3516947c4ce1f6223897a695af4afb957e4b9650f2148f7d7bef09153dee02e9263d094400</signature></item><item><title>markdown support and test variable interpolation</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2026-03-06_16-18-50.md</link><description><![CDATA[<h1>Markdown Features Sample</h1>
+<h2>Headings</h2>
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+<h2>Emphasis</h2>
+<ul>
+<li><em>Italic</em></li>
+<li><strong>Bold</strong></li>
+<li><strong><em>Bold &amp; Italic</em></strong></li>
+<li>~~Strikethrough~~</li>
+</ul>
+<h2>Lists</h2>
+<h3>Unordered List</h3>
+<ul>
+<li>Item A</li>
+<li>Item B</li>
+<li>Nested item</li>
+</ul>
+<h3>Ordered List</h3>
+<ol>
+<li>First</li>
+<li>Second</li>
+<li>Third</li>
+</ol>
+<h2>Links</h2>
+<p><a href="https://www.microsoft.com">Microsoft</a></p>
+<h2>Images</h2>
+<p><img alt="Alt text" src="image-url" /></p>
+<h2>Code</h2>
+<p>Inline code: <code>print("Hello")</code></p>
+<p>Code block:</p>
+<pre><code class="language-python">def greet():
+  return &quot;Hello&quot;
+</code></pre>
+<h2>Blockquotes</h2>
+<blockquote>
+<p>This is a blockquote.</p>
+</blockquote>
+<h2>Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Stock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pen</td>
+<td>1€</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Notebook</td>
+<td>3€</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2>Horizontal Rule</h2>
+<hr />
+<h2>Task Lists</h2>
+<ul>
+<li>[x] Add markdown features</li>
+<li>[ ] Review</li>
+<li>[ ] Finalize</li>
+</ul>
+<h2>Escaping Characters</h2>
+<p>Use <code>\*</code> to show a literal asterisk.</p>
+<h2>Footnotes</h2>
+<p>Here is a sentence with a footnote.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<h2>Inline HTML</h2>
+<p>This is an inline HTML example.</p>
+
+<p><img alt="Image" src="https://images2.alphacoders.com/479/thumb-350-479565.webp" /></p>
+<p>Más info en <a href="https://ejemplo.com">mi web</a></p>
+<p>Testing template string:</p>
+<p>my_var: VAR from metadata</p>
+<p>file_path: feeds/2026-03-06_16-18-50.md</p>
+<p>file_name: 2026-03-06_16-18-50.md</p>
+<p>file_dir: feeds</p>
+<p>file_ext: .md</p>
+<p>gh_repo_source_base_url: https://github.com/Desvelao/social-network/tree/main</p>
+<p>gh_owner: Desvelao</p>
+<p>gh_repo: social-network</p>
+<p>gh_pages_base_url: https://desvelao.github.io/social-network</p>
+<p>original date: 2026-03-06T16:18:50Z</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>This is the footnote text.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>]]></description><author>Antonio Gutiérrez (iamdesvelao@gmail.com.)</author><pubDate>Thu, 11 Jun 2026 23:22:36 GMT</pubDate><guid isPermaLink="false">feeds-2026-03-06-16-18-50-md?v=3</guid><signature alg="ed25519" key-id="MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=">7ffe9990daf58a9e4fdcdcf1a7e50610604aa33d4560083722ac4f7414c11e8ed01b111fbd8a5b2537b99f53f1e21cd410a1f80fec015bcc0763e858df3f8e0d</signature><media:content url="https://cdn.fastly.steamstatic.com/steam/apps/570/header.jpg" type="image/jpeg" medium="image"></media:content></item><item><title>Creating an inventory</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2026-04-02_17-34-00.md</link><description><![CDATA[<p>I was organizing some bathroom items when I found an item I thought I did not have and bought recently an item, so I have duplicated. Today and in other previous times, I have thought about some app to manage the inventory, so I could avoid these things.</p>
+<p>Some time ago I thought about creating an inventory app to run as PWA and that can be used offline from mobile using some persistence mechanism in the browser.</p>
+<p>Searching, I have found a self-hosted app that can be used from mobile too. It has no PWA feature or offline usage but I think it could be useful to me as starting point to create the inventory. This allows exporting to CSV so I could migrate the data.</p>
+<p>The app is called <a href="https://homebox.software/en/">Homebox</a> and it has the minimal requirements for me as nested storage location and other cool features.</p>]]></description><author>Antonio Gutiérrez (iamdesvelao@gmail.com.)</author><pubDate>Thu, 11 Jun 2026 23:13:00 GMT</pubDate><guid isPermaLink="false">feeds-2026-04-02-17-34-00-md?v=2</guid><signature alg="ed25519" key-id="MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=">d15fa08da0b058d829a72e4712c88447f24497d4ffa4f370dea04773aaf263291a620c2ea2bd784416461f22109ca7989f455e76107a4175da62f849adaf2704</signature></item><item><title>Roshan, new home!</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2024-12-17_21-17-00.md</link><description><![CDATA[<p>Roshan, a Dota 2 Discord bot, got a new home after a long time. New interactions update v0.4.0-alpha1 is available in the development server.</p>]]></description><author>Antonio Gutiérrez (iamdesvelao@gmail.com.)</author><pubDate>Tue, 17 Dec 2024 21:17:00 GMT</pubDate><guid isPermaLink="false">2024-12-17-21-17-00</guid><signature alg="ed25519" key-id="MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=">7cd7808b26b67f7c16636e032558abd6e747250c83e2438993ac823fdf689234c3a088d012e272c6f5582dfb97dc2ae4117e6694a27ded288cf4e35ab2f3aa0d</signature></item><item><title>Hi world!</title><link>https://github.com/Desvelao/social-network/tree/main/feeds/2024-05-01_19-23-10.md</link><description><![CDATA[<p>Hello world!</p>]]></description><author>Antonio Gutiérrez (iamdesvelao@gmail.com.)</author><pubDate>Wed, 01 May 2024 19:23:10 GMT</pubDate><guid isPermaLink="false">2024-05-01-19-23-10</guid><signature alg="ed25519" key-id="MCowBQYDK2VwAyEASG7uFK02E5dKvHXsX+uEyWFnwIxAFf+sc8Xe4x9cNG8=">157a11861a94e6235352baf8d228d8f866270fa8905f75dff56dffc4da0b3157de615d504efae22de867ad92773ad63c0332af840806ff74200f066140b13000</signature></item></channel></rss>
