@@ -50,6 +50,9 @@ The `.github/workflows/publish-feeds.yml` file builds and publishes the feeds. T
 
 Edit `.github/workflows/publish-feeds.yml`:
 
+- `source_dir` and `feeds_file`: the folder with the markdown sources and the name of the generated feed.
+- `feeds_limit`: (Optional) keep only the N newest items in the feed. All the items are published when it is omitted. Do not set it to `0`: that generates an empty feed.
+
 If some change is applied, commit and push the changes.
 
 ```bash

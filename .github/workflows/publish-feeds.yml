@@ -21,6 +21,9 @@ jobs:
       wheel_tag: "v0.0.2"
       source_dir: "feeds"
       feeds_file: "feeds.rss"
+      # Optional: keep only the N newest items. Omit it to publish all of them.
+      # Do not set it to "0": that produces an empty feed.
+      # feeds_limit: "50"
     secrets:
       feeds_title: ${{ secrets.FEEDS_TITLE }}
       feeds_description: ${{ secrets.FEEDS_DESCRIPTION }}
