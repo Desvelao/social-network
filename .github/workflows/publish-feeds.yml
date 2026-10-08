@@ -16,15 +16,17 @@ concurrency:
 
 jobs:
   build_feed:
-    uses: Desvelao/dsipy/.github/workflows/gha-build-feeds.yml@v0.0.2
+    uses: Desvelao/dsi-cli/.github/workflows/gha-build-feeds.yml@v0.1.0-alpha1
     with:
-      wheel_tag: "v0.0.2"
+      # Release tag of dsi-cli to install. Pinned: keep it in sync with the `uses:` ref above.
+      # (Empty = latest stable release; pre-releases such as alpha need an explicit tag.)
+      dsi_tag: "v0.1.0-alpha1"
       source_dir: "feeds"
       feeds_file: "feeds.rss"
       # Optional: keep only the N newest items. Omit it to publish all of them.
       # Do not set it to "0": that produces an empty feed.
       # feeds_limit: "50"
-      # Optional: extra arguments for `dsipy feeds build`, e.g. "--language es-ES"
+      # Optional: extra arguments for `dsi feeds build`, e.g. "--language es-ES"
       # command_args: ""
       # Optional: name of the intermediate artifact (the publish job follows it automatically)
       # artifact_name: "feeds-file"
@@ -39,8 +41,8 @@ jobs:
       # Optional: sign the feed items (both keys must be set, PEM format)
       sign_private_key: ${{ secrets.FEEDS_SIGN_PRIVATE_KEY }}
       sign_public_key: ${{ secrets.FEEDS_SIGN_PUBLIC_KEY }}
-      # Optional: token with read access to the dsipy releases (only for private wheel repositories)
-      # wheel_repo_token: ${{ secrets.WHEEL_REPO_TOKEN }}
+      # Optional: token with read access to the dsi-cli releases (only for private release repositories)
+      # dsi_repo_token: ${{ secrets.DSI_REPO_TOKEN }}
 
   publish:
     runs-on: ubuntu-latest
